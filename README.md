@@ -39,10 +39,11 @@ After cloning the github, you will want to do the following to get the code runn
 After this, the project will be running on your localhost. 
 Typically at http://localhost:3000/
 
-Then you connect your metamask , connect it to hardhat network (rpc url- gitpod port address, chain id -31337) and then import account using any private key.
+Then you can connect your metamask account , connect it to hardhat network created (rpc url- gitpod port address, chain id -31337) and then import account using any private key. The contract is now connected to the front end and fully functional.
 
-You can then interact with the frontend.
-
-
+# Author:
 U SRIRAM
 usriram186@gmail.com
+
+# License:
+This project is licensed under the [UNLICENSED] License - see the LICENSE.md file for details
