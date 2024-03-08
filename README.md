@@ -43,6 +43,7 @@ Typically at http://localhost:3000/
 Connect the metamask using the hardhat network.
 - rpc url : gitpod port address
 - chain id: 31337
+
   Now import using any private key. Now you will have enough ETH to transact your gas fees.
 
 # Author:
