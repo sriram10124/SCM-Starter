@@ -39,7 +39,11 @@ After cloning the github, you will want to do the following to get the code runn
 After this, the project will be running on your localhost. 
 Typically at http://localhost:3000/
 
-You can link your MetaMask account to the Hardhat network that has been set up (RPC URL - Gitpod port address, Chain ID - 31337), and then import an account using any private key. This will establish a connection between the contract and the front end, making it fully operational.
+# Metamask Connection
+Connect the metamask using the hardhat network.
+- rpc url : gitpod port address
+- chain id: 31337
+  Now import using any private key. Now you will have enough ETH to transact your gas fees.
 
 # Author:
 U SRIRAM
