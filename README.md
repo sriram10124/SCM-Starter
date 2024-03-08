@@ -24,7 +24,7 @@ getItemNames(): Public view function that returns an array of strings containing
 The removeItem function includes a require statement to ensure that the item being removed actually exists in the contract.
 
 CODE:
-- Contract file: ASSEMENT.sol
+- Contract file: ASSESSMENT.sol
   
   // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
