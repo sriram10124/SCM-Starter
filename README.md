@@ -1,6 +1,6 @@
 # Starter Next/Hardhat Project
 Overview: 
-Created a store management project where you can add, remove and display items from frontend with solidity contract as backend. Also used metamask wallet
+- Created a store management project where you can add, remove and display items from frontend with solidity contract as backend. Also used metamask wallet
 
 Description
 - State Variables:
