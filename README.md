@@ -45,6 +45,7 @@ Connect the metamask using the hardhat network.
 - chain id: 31337
 
   Now import using any private key. Now you will have enough ETH to transact your gas fees.
+- Currency Symbol- ETH
 
 # Author:
 U SRIRAM
