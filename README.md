@@ -1,4 +1,4 @@
-# Starter Next/Hardhat Project
+# Hardhat Project
 Overview: 
 - Created a store management project where you can add, remove and display items from frontend with solidity contract as backend. Also used metamask wallet
 
