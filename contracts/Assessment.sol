@@ -1,60 +1,47 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-//import "hardhat/console.sol";
-
 contract Assessment {
-    address payable public owner;
-    uint256 public balance;
+    string public balance;
+    mapping(uint => string) public items;
+    uint[] public itemIds; 
 
-    event Deposit(uint256 amount);
-    event Withdraw(uint256 amount);
-
-    constructor(uint initBalance) payable {
-        owner = payable(msg.sender);
+    constructor(string memory initBalance) payable {
         balance = initBalance;
     }
 
-    function getBalance() public view returns(uint256){
+    function getString() public view returns (string memory) {
         return balance;
     }
 
-    function deposit(uint256 _amount) public payable {
-        uint _previousBalance = balance;
-
-        // make sure this is the owner
-        require(msg.sender == owner, "You are not the owner of this account");
-
-        // perform transaction
-        balance += _amount;
-
-        // assert transaction completed successfully
-        assert(balance == _previousBalance + _amount);
-
-        // emit the event
-        emit Deposit(_amount);
+    function addItem(string memory _name, uint256 id) public payable {
+        items[id] = _name;
+        itemIds.push(id);
+        balance = string(abi.encodePacked("Added item ", _name));
     }
 
-    // custom error
-    error InsufficientBalance(uint256 balance, uint256 withdrawAmount);
+    function removeItem(uint id) public {
+        require(bytes(items[id]).length > 0, "Item does not exist");
+        balance = string(abi.encodePacked("Removed item ", items[id]));
 
-    function withdraw(uint256 _withdrawAmount) public {
-        require(msg.sender == owner, "You are not the owner of this account");
-        uint _previousBalance = balance;
-        if (balance < _withdrawAmount) {
-            revert InsufficientBalance({
-                balance: balance,
-                withdrawAmount: _withdrawAmount
-            });
+        delete items[id];
+
+        for (uint i = 0; i < itemIds.length; i++) {
+            if (itemIds[i] == id) {
+                for (uint j = i; j < itemIds.length - 1; j++) {
+                    itemIds[j] = itemIds[j + 1];
+                }
+                itemIds.pop();
+                break;
+            }
         }
+    }
 
-        // withdraw the given amount
-        balance -= _withdrawAmount;
-
-        // assert the balance is correct
-        assert(balance == (_previousBalance - _withdrawAmount));
-
-        // emit the event
-        emit Withdraw(_withdrawAmount);
+    function getItemNames() public view returns (string[] memory) {
+        string[] memory result = new string[](itemIds.length);
+        for (uint i = 0; i < itemIds.length; i++) {
+            result[i] = items[itemIds[i]];
+        }
+        return result;
     }
 }
