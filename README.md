@@ -1,9 +1,9 @@
 # FRUIT STORE MANAGEMENT
 
-Overview: 
+# Overview: 
 - Created a store management project where you can add, remove and display items from frontend with solidity contract as backend. Metamask is connected and used for gas fees,etc. 
 
-Description
+# Description
 - State Variables:
 
 balance: A public string variable representing the current balance. It's initially set through the constructor and can be accessed publicly.
@@ -26,8 +26,7 @@ getItemNames(): Public view function that returns an array of strings containing
 The removeItem function includes a require statement to ensure that the item being removed actually exists in the contract.
 
 
-
-- Execution:
+# Execution:
 
 After cloning the github, you will want to do the following to get the code running on your computer.
 
