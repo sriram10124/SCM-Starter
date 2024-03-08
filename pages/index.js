@@ -53,32 +53,42 @@ export default function HomePage() {
     setATM(atmContract);
   }
 
-  const getBalance = async() => {
+  const getString = async() => {
     if (atm) {
-      setBalance((await atm.getBalance()).toNumber());
+      setBalance((await atm.getString()).toString());
     }
   }
 
-  const deposit = async() => {
+  const addItem = async() => {
+    const _item=prompt("Enter the item name");
+    const _id=prompt("Enter the item ID");
     if (atm) {
-      let tx = await atm.deposit(1);
+      let tx = await atm.addItem(_item,_id);
       await tx.wait()
-      getBalance();
+      getString();
     }
   }
 
-  const withdraw = async() => {
+  const removeItem = async() => {
+    const _id=prompt("Enter the item ID you want to remove");
     if (atm) {
-      let tx = await atm.withdraw(1);
+      let tx = await atm.removeItem(_id);
       await tx.wait()
-      getBalance();
+      getString();
     }
   }
+  const returnItem = async() => {
+    
+    if (atm) {
+      setBalance((await atm.getItemNames()).toString());
+    }
+  }
+
 
   const initUser = () => {
     // Check to see if user has Metamask
     if (!ethWallet) {
-      return <p>Please install Metamask in order to use this ATM.</p>
+      return <p>Please install Metamask in order to use.</p>
     }
 
     // Check to see if user is connected. If not, connect to their account
@@ -87,15 +97,16 @@ export default function HomePage() {
     }
 
     if (balance == undefined) {
-      getBalance();
+      getString();
     }
 
     return (
       <div>
         <p>Your Account: {account}</p>
-        <p>Your Balance: {balance}</p>
-        <button onClick={deposit}>Deposit 1 ETH</button>
-        <button onClick={withdraw}>Withdraw 1 ETH</button>
+        <p>Answer: {balance}</p>
+        <button onClick={addItem}>Add Item</button>
+        <button onClick={removeItem}>Remove Item</button>
+        <button onClick={returnItem}>Display Items</button>
       </div>
     )
   }
@@ -104,11 +115,14 @@ export default function HomePage() {
 
   return (
     <main className="container">
-      <header><h1>Welcome to the Metacrafters ATM!</h1></header>
+      <header><h1>Fruit Store Management</h1></header>
       {initUser()}
       <style jsx>{`
         .container {
-          text-align: center
+          text-align: center;
+          background-color:lightgray;
+          
+          padding:2px;
         }
       `}
       </style>
